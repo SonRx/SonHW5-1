@@ -36,17 +36,17 @@ elif [ "$1" == "flash" ]; then
   echo "100" >> "$LED3_PATH/delay_on"
 elif [ "$1" == "status" ]; then
   cat "$LED3_PATH/trigger";
-## homework -> add two new command line arguments "blink" and integer "n"
+####################################################### homework -> add two new command line arguments "blink" and integer "n"
 elif [ "$1" == "blink" ] && [ "$2" -gt 0 ]; then
  echo "Blinking $1  USR3 LED $2 times"
  removeTrigger
- for (( i=1; i<=$2; i++ ))
+ for (( i=1; i<=$2; i++ )) # for loop to run $2 (n) times
  do
-   	echo "1" >> "$LED3_PATH/brightness"
-   	sleep 1
-	echo "0" >> "$LED3_PATH/brightness"
-	sleep 1
+   	echo "1" >> "$LED3_PATH/brightness" # turns on light
+   	sleep 1				    # for one second
+	echo "0" >> "$LED3_PATH/brightness" # turns off light
+	sleep 1				    # for one second
   done
-####################
+#######################################################
 fi
 echo "End of the LED Bash Script"
